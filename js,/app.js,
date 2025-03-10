@@ -1,0 +1,61 @@
+# Project Proposal Example (omit from your own file)
+
+# To do's (omit from your own file when done)
+- Your choice of game
+- Pseudocode for the overall gameplay
+- Wire frames
+- User stories (MVP and stretch goals)
+- Any game-specific additional requirements (API used for data etc)
+- The GitHub repository for your project
+    - Create files `index.html` `style.css` `script.js` [`README.md`](http://README.md) `PROPOSAL.md`
+- Set up at least one 1:1 with Emre for Project Week [here](https://calendly.com/emre-surmeli/1-1s-with-ga) 👈
+
+Project Choice as Title (Tell us which project you're doing!)
+
+## Project Description 
+
+My app is called Tic Tac Toe. It's a game app for players who want to play Tic Tac Toe online. Two players can join an online game and play a round of Tic Tac Toe, with the score being kept automatically and game results displayed at then end of a round -- whichever player won, or in the case of a draw, a tie between the users. Users will have the option to play again. In the future, I'd like to add a feature where one player can play against the computer. 
+
+## Wire Frames
+
+**Initial Landing View**
+
+
+**Results View**
+
+
+## User Stories
+
+#### MVP Goals
+
+
+#### Stretch Goals
+
+
+## Pseudocode
+
+```
+
+#### Notionboard Template
+Notionboard template for building projects ( You can use this for any project )
+https://www.notion.so/GA-Unit-3-Tunr-Lab-da2c82fafd4e4a7aa654676732db9ee3
+
+#### Timeline - Daily Accountability
+Example of a Timeline to keep organized and on task for hitting goals every single day you’re on the sprint for your project.
+
+Create your own table using this markdown table generator website:
+https://www.tablesgenerator.com/markdown_tables
+
+Do not neglect to plan, you will thank yourself later for being proactive!
+| Day        |   | Task                               | Blockers | Notes/ Thoughts |
+|------------|---|------------------------------------|----------|-----------------|
+| Thursday   |   | Create and present proposal        |          |                 |
+| Friday     |   | Create html, js, css files         |          |                 |
+| Saturday   |   | Create basic scaffolding           |          |                 |
+| Sunday     |   | Add functionality                  |          |                 |
+| Monday     |   | Add styling                        |          |                 |
+| Tuesday    |   | Finaliza MVP                       |          |                 |
+| Wedenesday |   | Work on stretch goals              |          |                 |
+| Thursday   |   | Work on icebox items if applicable |          |                 |
+| Friday     |   | Presentation Day!                  |          |                 |
+|            |   |                                    |          |                 |
