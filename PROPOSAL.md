@@ -10,7 +10,7 @@ Turn Based Combad
 ## Project Description 
 I want to make a relatively simple turn based combat game with a shop and a short storyline as well as an infinite mode
 ## Wire Frames
-![battle-wire-frame](./assets/battle%20.jpg)
+![battle-wire-frame](./assets/battle.jpeg)
 **Initial Landing View**
 ![initial-landing](./assets/landing-page.jpeg)
 
@@ -19,51 +19,55 @@ I want to make a relatively simple turn based combat game with a shop and a shor
 
 ## User Stories
 As a user, 
-the player should be able to engage in turn based combat with various types of enemies with various classes and abilities
-AAU, the player should be able to choose whether they fight, flee, or freeze when frightened
-if player chooses fight they should not be able to flee from a fight and gain 1.5x damgage when low on hp
-if player chooses flee they have a 1.5x times higher chance of succesfully fleeing a fight
-if player chooses freeze the have 25% lower chance to succefully flee and player should gain the freeze ability causing both the enemy and player to not be able to attack for 2 turns
-the player should be able to lose and gain hp and mana
-the enemy shoudl be able to lose and gain hp
-enemies should have a bloodlust mode when the player is below a certain ammount of health depending on the bloodthirstyness of the monster
-bloodlust mode should make it so the enemy only casts damage dealing abilities at 1.25x strength with some monsters being 1.5x strength 
-player shoudl be able to use various attacks with differnt names, accuracy, and damage 
-player should be able to run from combat based on a few factors: speed comparitive to enemy and fight,flight, or freeze reaction 
-player should gain gold, and exp from winning fights (stretch goal?)
-player should restart from last checkpoint if player loses combat (what's a checkpoint?)
-player should be able to access the shop (stretch goal?)
-player should be able to buy items from the shop (stretch goal?)
-items should effect player stats 
-player should be able to access inventory
-player should be able to access a stats menu 
-player should be able to level up and choose stats to increase 
-once player has gotten to level (tbt) (and also prolly some other factor) make boss available to fight
-once player has defeated boss give option to restart or continue 
+- AAU i should be able to engage in turn based combat with various types of enemies with various classes and abilities
+
+- AAU i  should be able to choose whether they fight, flee, or freeze when frightened
+- AAU if I chooses fight they should not be able to flee from a fight and gain 1.5x damgage when low on hp
+- AAU if I chooses flee they have a 1.5x times higher chance of succesfully fleeing a fight
+- AAU if i chooses freeze the have 25% lower chance to succefully flee and player should gain the freeze ability causing both the enemy and player to not be able to attack for 2 turns
+- AAU i should be able to lose and gain hp and mana
+-the enemy should be able to lose and gain hp
+- enemies should have a bloodlust mode when the player is below a certain ammount of health depending on the bloodthirstyness of the monster
+- bloodlust mode should make it so the enemy only casts damage dealing abilities at 1.25x strength with some monsters being 1.5x strength 
+- AAU i  shoudl be able to use various attacks with differnt names, accuracy, and damage 
+- AAU i  should be able to run from combat based on a few factors: speed comparitive to enemy and fight,flight, or freeze reaction 
+- AAU i  should gain gold, and exp from winning fights (stretch goal?)
+- AAU i  should restart from last checkpoint if player loses combat (what's a checkpoint?)
+- AAU i  should be able to access the shop (stretch goal?)
+- AAU i  should be able to buy items from the shop (stretch goal?)
+- AAU items should effect my stats 
+- AAU i should be able to access inventory
+- AAU i should be able to access a stats menu 
+- AAU I should be able to level up and choose stats to increase 
+- AAUonce i have gotten to level (tbd) (and also prolly some other factor) make boss available to fight
+- AAU once I has defeated boss give option to restart or continue 
 
 #### MVP Goals
-As a user, 
-the player should be able to engage in turn based combat with various types of enemies with various classes and abilities
-AAU, the player should be able to choose whether they fight, flee, or freeze when frightened
-if player chooses fight they should not be able to flee from a fight and gain 1.5x damgage when low on hp
-if player chooses flee they have a 1.5x times higher chance of succesfully fleeing a fight
-if player chooses freeze the have 25% lower chance to succefully flee and player should gain the freeze ability causing both the enemy and player to not be able to attack for 2 turns
-the player should be able to lose and gain hp and mana
-the enemy shoudl be able to lose and gain hp
-enemies should have a bloodlust mode when the player is below a certain ammount of health depending on the bloodthirstyness of the monster
-bloodlust mode should make it so the enemy only casts damage dealing abilities at 1.25x strength with some monsters being 1.5x strength 
-player shoudl be able to use various attacks with differnt names, accuracy, and damage 
-player should be able to run from combat based on a few factors: speed comparitive to enemy and fight,flight, or freeze reaction 
+- AAU i should be able to engage in turn based combat with various types of enemies with various classes and abilities
+
+- AAU i  should be able to choose whether they fight, flee, or freeze when frightened
+- AAU if I chooses fight they should not be able to flee from a fight and gain 1.5x damgage when low on hp
+- AAU if I chooses flee they have a 1.5x times higher chance of succesfully fleeing a fight
+- AAU if i chooses freeze the have 25% lower chance to succefully flee and player should gain the freeze ability causing both the enemy and player to not be able to attack for 2 turns
+- AAU i should be able to lose and gain hp and mana
+-the enemy should be able to lose and gain hp
+- enemies should have a bloodlust mode when the player is below a certain ammount of health depending on the bloodthirstyness of the monster
+- bloodlust mode should make it so the enemy only casts damage dealing abilities at 1.25x strength with some monsters being 1.5x strength 
+- AAU i  shoudl be able to use various attacks with differnt names, accuracy, and damage 
+- AAU i  should be able to run from combat based on a few factors: speed comparitive to enemy and fight,flight, or freeze reaction 
+- AAU i  should gain gold, and exp from winning fights (stretch goal?)
+- AAU i  should restart from last checkpoint if player loses combat (what's a checkpoint?)
 
 #### Stretch Goals
-player should be able to access the shop (stretch goal?)
-player should be able to buy items from the shop (stretch goal?)
-items should effect player stats 
-player should be able to access inventory
-player should be able to access a stats menu 
-player should be able to level up and choose stats to increase 
-once player has gotten to level (tbt) (and also prolly some other factor) make boss available to fight
-once player has defeated boss give option to restart or continue 
+- AAU i  should be able to access the shop (stretch goal?)
+- AAU i  should be able to buy items from the shop (stretch goal?)
+- AAU items should effect my stats 
+- AAU i should be able to access inventory
+- AAU i should be able to access a stats menu 
+- AAU I should be able to level up and choose stats to increase 
+- AAUonce i have gotten to level (tbd) (and also prolly some other factor) make boss available to fight
+- AAU once I has defeated boss give option to restart or continue 
+- i want to develop a treversable overworld and a intro animation
 
 ## Pseudocode
 // Pseudocode in Plain English for RPG Game
