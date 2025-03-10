@@ -12,7 +12,7 @@ I want to make a relatively simple turn based combat game with a shop and a shor
 ## Wire Frames
 
 **Initial Landing View**
-
+![fight-landing](./assets/fight%20main%20screen.jpeg)
 
 **Results View**
 
@@ -42,7 +42,18 @@ once player has gotten to level (tbt) (and also prolly some other factor) make b
 once player has defeated boss give option to restart or continue 
 
 #### MVP Goals
-
+As a user, 
+the player should be able to engage in turn based combat with various types of enemies with various classes and abilities
+AAU, the player should be able to choose whether they fight, flee, or freeze when frightened
+if player chooses fight they should not be able to flee from a fight and gain 1.5x damgage when low on hp
+if player chooses flee they have a 1.5x times higher chance of succesfully fleeing a fight
+if player chooses freeze the have 25% lower chance to succefully flee and player should gain the freeze ability causing both the enemy and player to not be able to attack for 2 turns
+the player should be able to lose and gain hp and mana
+the enemy shoudl be able to lose and gain hp
+enemies should have a bloodlust mode when the player is below a certain ammount of health depending on the bloodthirstyness of the monster
+bloodlust mode should make it so the enemy only casts damage dealing abilities at 1.25x strength with some monsters being 1.5x strength 
+player shoudl be able to use various attacks with differnt names, accuracy, and damage 
+player should be able to run from combat based on a few factors: speed comparitive to enemy and fight,flight, or freeze reaction 
 
 #### Stretch Goals
 player should be able to access the shop (stretch goal?)
@@ -55,36 +66,89 @@ once player has gotten to level (tbt) (and also prolly some other factor) make b
 once player has defeated boss give option to restart or continue 
 
 ## Pseudocode
-<!-- asign player object with speed,hp,mana,armor, and an array with inventory  -->
-<!-- asign monster object with an array of differnt monsters all with speed,hp,mana,armor, and abilities -->
-make the game function
-    <!-- a while loop that can only beak if you win or choose to reset the game  -->
-    save last accessed checkpoint 
-make the who goes first function
-    pass the function player speed and monster speed 
-    return the charector with the higher speed 
-make the damage calculation function
-    pass the damage calculation function both arrays  player-selected-attack,monter-selected-attack, and turn
-    calculate hp - selected-attack * armor modifier 
-    return selected charactor hp 
-make the run function
-    pass the function monster speed, player speed, fear-reaction 
-    if monster speed is higher than player speed reduce chance of running away by an ammount up to 99% depending on how much faster monster is
-    reduce chance of running determined by fear-reaction
-    exit battle loop by setting run variable to true 
-make the items function
-    access the inventory array within the player object 
-    display the inventory array 
-    once item is selected execute apropriate function 
+// Pseudocode in Plain English for RPG Game
 
-make the potions function
-    access the potions ability 
-    execute potions ability 
-    return new modified stat 
-initialize battle function
-    run a while loop until run = true or player or monster hp = 0 
-    if moster hp = 0 add gold, and exp to player item
-    if player hp = 0 restart game from last checkpoint 
+// Step 1: Start Game
+// - Show the start menu
+// - Ask the player to choose a reaction: Fight, Flee, or Freeze
+// - Store the player's choice and adjust their stats accordingly
+
+// Step 2: Initialize Player Stats Based on Choice
+// - If the player chooses Fight:
+//   - Disable fleeing
+//   - Increase damage by 1.5x when HP is low
+// - If the player chooses Flee:
+//   - Increase chance of successfully fleeing by 1.5x
+// - If the player chooses Freeze:
+//   - Reduce flee success rate by 25%
+//   - Give player the Freeze ability (stuns both player and enemy for 2 turns)
+
+// Step 3: Start the Game Loop
+// - Keep running the game as long as the player is alive
+// - Randomly generate enemy encounters
+// - Start combat when encountering an enemy
+
+// Step 4: Turn-Based Combat System
+// - The player gets to choose an action each turn:
+//   - Attack (Choose from different attack options with varying accuracy and damage)
+//   - Flee (Check if the player is allowed to flee and calculate flee success based on stats)
+//   - Use Item (Access inventory and apply item effects)
+// - After the player acts, the enemy takes its turn
+
+// Step 5: Enemy Behavior
+// - The enemy loses HP when attacked
+// - The enemy can use different abilities based on class
+// - If the player’s HP is below a certain threshold, the enemy may enter Bloodlust Mode:
+//   - Only use attack abilities
+//   - Attack at 1.25x or 1.5x strength depending on the enemy type
+
+// Step 6: Running from Combat
+// - Calculate flee success using player speed vs enemy speed
+// - Adjust chance based on the player’s reaction choice (Fight, Flee, Freeze)
+// - If successful, end the battle
+// - If unsuccessful, the enemy attacks
+
+// Step 7: Losing and Gaining HP and Mana
+// - Player loses HP when attacked
+// - Player can regain HP using healing abilities or items
+// - Enemy loses HP when attacked
+// - Player and enemy can have abilities that restore HP or mana
+
+// Step 8: Victory and Rewards
+// - If the enemy's HP reaches 0, the player wins
+// - Player gains gold and experience points (if included)
+// - Player levels up if enough experience is gained
+// - If leveling up, allow the player to allocate stat points
+
+// Step 9: Defeat and Checkpoints
+// - If the player’s HP reaches 0, they lose
+// - Restart the game from the last checkpoint (checkpoint = last safe location or level-up point)
+
+// Step 10: Shop System (Stretch Goal)
+// - Allow player to enter a shop
+// - Display a list of available items
+// - Allow the player to purchase items if they have enough gold
+// - Add purchased items to inventory
+
+// Step 11: Inventory System
+// - Allow player to open inventory
+// - Display list of items owned
+// - Allow player to use or equip items
+
+// Step 12: Stats Menu
+// - Display player stats (HP, mana, attack, defense, etc.)
+// - Allow the player to view and manage stats
+
+// Step 13: Leveling Up
+// - If the player gains enough experience, level up
+// - Prompt the player to choose stats to increase
+
+// Step 14: Boss Fight Availability
+// - Once the player reaches a certain level (TBD) and other conditions are met, unlock boss battle
+
+// Step 15: Endgame Options
+// - If the player defeats the boss, give them the option to restart or continue playing
+
 
 
 ```
