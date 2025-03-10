@@ -10,9 +10,9 @@ Turn Based Combad
 ## Project Description 
 I want to make a relatively simple turn based combat game with a shop and a short storyline as well as an infinite mode
 ## Wire Frames
-
+![battle-wire-frame](./assets/battle%20.jpg)
 **Initial Landing View**
-![fight-landing](./assets/fight%20main%20screen.jpeg)
+![initial-landing](./assets/landing-page.jpeg)
 
 **Results View**
 
