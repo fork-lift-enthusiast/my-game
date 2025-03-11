@@ -2,11 +2,11 @@
 Turn Based Combad
 ## Project Description 
 I want to make a simple turn based combat game
+
+
 ![battle-wire-frame](./assets/battle.jpeg)
-**Initial Landing View**
 ![initial-landing](./assets/landing-page.jpeg)
 
-**Results View**
 
 #### MVP Goals
 - AAU I should see a welcome page
@@ -19,6 +19,7 @@ I want to make a simple turn based combat game
 - AAU I should be able to win or lose a fight
 - AAU if i win start a new fight
 - AAU if i lose go back to welcome screen
+
 #### Stretch Goals
 - AAU i  should restart from last checkpoint if player loses combat checkpoints 
 - bloodlust mode should make it so the enemy only casts damage dealing abilities at 1.25x strength with some monsters being 1.5x strength 
@@ -36,6 +37,8 @@ I want to make a simple turn based combat game
 - AAU if I chooses fight they should not be able to flee from a fight and gain 1.5x damgage when low on hp
 - AAU if I chooses flee they have a 1.5x times higher chance of succesfully fleeing a fight
 - AAU if i chooses freeze the have 25% lower chance to succefully flee and player should gain the freeze ability causing both the enemy and player to not be able to attack for 2 turns
+
+
 ## Pseudocode
 - make an object that contains player stats speed, health,mana, and an array of attacks 
 - make an array of objects for all the different monsters that all have speed,health, and an array of difffernt attacks
@@ -50,23 +53,16 @@ I want to make a simple turn based combat game
 - items should display health potion and mana potion 
 - when you select a button wihtin fight or a button within items it should end your turn
 - make a monster turn function that randomly selects a monster attack runs accuracy calc and damage calc 
-- 
 
 
-
-make a player turn function 
-
-
-```
-
-#### Notionboard Template
-Notionboard template for building projects ( You can use this for any project )
-https://www.notion.so/GA-Unit-3-Tunr-Lab-da2c82fafd4e4a7aa654676732db9ee3
 
 #### Timeline - Daily Accountability
-Example of a Timeline to keep organized and on task for hitting goals every single day you’re on the sprint for your project.
-
-Create your own table using this markdown table generator website:
-https://www.tablesgenerator.com/markdown_tables
-
-Do not neglect to plan, you will thank yourself later for being proactive!
+| day       |   | task                                               |  
+|-----------|---|----------------------------------------------------|
+| monday    |   | start code and proposal                            |  
+| tuesday   |   | finish proposal,finish javascript start css n html |   
+| wednesday |   | finish css n html                                  |  
+| thursday  |   | start javascript for stretch goals                 |  
+| friday    |   | start css n html for stretch goals                 |   
+| saturday  |   | finish javascript for stretch goals                |
+| sunday    |   | finish css n html for stretch goals                |
