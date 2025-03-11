@@ -1,9 +1,24 @@
 // ------------------------------ CONSTANTS ---------------------------------
 let win = false;
 let restart = false;
+let currentMonster;
+let currentTurn;
 
 // ------------------------------- OBJECTS ----------------------------------
-let player = { health: 100, speed: 10, armor: 0, mana: 50,strength:1, inventory: [] };
+let player = {
+  health: 100,
+  speed: 10,
+  armor: 0,
+  mana: 50,
+  strength: 1,
+  inventory: [],
+  attacks: {
+    punch: { accuracy: 0.9, damage: 25, cost: 0 },
+    kick: { accuracy: 0.7, damage: 35, cost: 0 },
+    lilFire: { accuracy: 0.8, damage: 45, cost: 10 },
+    bigFire: { accuracy: 0.6, damage: 60, cost: 20 },
+  },
+};
 
 let monsters = [
   {
@@ -47,53 +62,163 @@ let monsters = [
     ],
   },
 ];
+
 const fearReactions = ["fight", "flight", "freeze"];
+const startButton = document.querySelector(".start-button");
+const battleScreen = document.querySelector(".battle");
+const attackButton = document.querySelector(".attack-button");
+const itemsButton = document.querySelector(".items-button");
+const runButton = document.querySelector(".run-button");
+const punchButton = document.querySelector(".punch");
+const kickButton = document.querySelector(".kick");
+const lilFireButton = document.querySelector(".lil-fire");
+const bigFireButton = document.querySelector(".big-fire");
+const manaPotionButton = document.querySelector(".mana-potion");
+const healthPotionButton = document.querySelector(".health-potion");
+const playerActions = document.querySelector(".player-actions ");
+const playerActionsBtns = document.querySelectorAll(".player-actions button");
+const topRow = document.querySelector(".top-row");
+const btmRow = document.querySelector(".bottom-row");
+// const topRowState2 = document.querySelector(".top-row-st-2");
+// const btmRowState2 = document.querySelector(".btm-row-st-2");
+itemsButton.addEventListener("click", () => {
+  itemsButton.style.display = "none";
+  attackButton.style.display = "none";
+  runButton.style.display = "none";
+  topRow.style.display = "none";
+  btmRow.style.display = "none";
+  manaPotionButton.classList.remove("hidden");
+  healthPotionButton.classList.remove("hidden");
+  healthPotionButton.style.display = "flex";
+  manaPotionButton.style.display = "flex";
+  playerActions.style.flexDirection = "row";
+  playerActionsBtns.forEach((el) => {
+    el.style.height = "50%";
+  });
+  playerActions.style.justifyContent = "space-evenly";
+});
+attackButton.addEventListener("click", () => {
+  console.log("hi");
+  itemsButton.style.display = "none";
+  attackButton.style.display = "none";
+  runButton.style.display = "none";
+  // topRowState2.style.display = "flex";
+  // btmRowState2.style.display = "flex";
+  punchButton.classList.remove("hidden");
+  kickButton.classList.remove("hidden");
+  lilFireButton.classList.remove("hidden");
+  bigFireButton.classList.remove("hidden");
+});
+startButton.addEventListener("click", () => {
+  const startScreen = document.querySelector(".start-screen");
+  startScreen.style.display = "none";
+  playerActions.style.display = "flex";
+
+});
+
+kickButton.addEventListener("click", () => {
+  punchButton.classList.add("hidden");
+  kickButton.classList.add("hidden");
+  lilFireButton.classList.add("hidden");
+  bigFireButton.classList.add("hidden");
+  itemsButton.style.display = "inline-block";
+  attackButton.style.display = "inline-block";
+  runButton.style.display = "inline-block";
+  damageMathPlayer(monsters[0], "kick");
+});
+punchButton.addEventListener("click", () => {
+  punchButton.classList.add("hidden");
+  kickButton.classList.add("hidden");
+  lilFireButton.classList.add("hidden");
+  bigFireButton.classList.add("hidden");
+  itemsButton.style.display = "inline-block";
+  attackButton.style.display = "inline-block";
+  runButton.style.display = "inline-block";
+  damageMathPlayer(monsters[0], "punch");
+});
+lilFireButton.addEventListener("click", () => {
+  punchButton.classList.add("hidden");
+  kickButton.classList.add("hidden");
+  lilFireButton.classList.add("hidden");
+  bigFireButton.classList.add("hidden");
+  itemsButton.style.display = "inline-block";
+  attackButton.style.display = "inline-block";
+  runButton.style.display = "inline-block";
+  damageMathPlayer(monsters[0], "lilFire");
+});
+bigFireButton.addEventListener("click", () => {
+  punchButton.classList.add("hidden");
+  kickButton.classList.add("hidden");
+  lilFireButton.classList.add("hidden");
+  bigFireButton.classList.add("hidden");
+  itemsButton.style.display = "inline-block";
+  attackButton.style.display = "inline-block";
+  runButton.style.display = "inline-block";
+  damageMathPlayer(monsters[0], "bigFire");
+  damageMathMonster(monster);
+});
+
 // ------------------------------ FUNCTIONS ---------------------------------
 const whichMonster = () => {
   //outputs an object
-  return monsters[Math.floor(Math.random() * 5)]; 
+  return monsters[Math.floor(Math.random() * 5)];
 };
 
-const firstMove = () => {
+const firstMove = (monster) => {
   //outputs a integer
-  num = player.speed - whichMonster.speed;
+  num = player.speed - monster.speed;
   if (num < 0) {
     return 1;
   } else {
     return 0;
   }
 };
-
-const damageMath = (monster) => {
-  selectedAttack = monster.attacks[Math.floor(Math.random() * 3)];
+const damageMathPlayer = (monster, attack) => {
+  let accuracy = player.attacks[attack].accuracy;
+  let damage = player.attacks[attack].damage;
+  let random = Math.random();
+  if (random < accuracy) {
+    monster.health -= damage;
+  }
+};
+const damageMathMonster = (monster) => {
+  let selectedAttack = monster.attacks[Math.floor(Math.random() * 3)];
   if (Math.random() < selectedAttack.accuracy) {
     player.health -= selectedAttack.damage;
   }
 };
 
-const monsterTurn = (monster) =>{
-    damageMath(monster)
-}
-
-const playerTurn = ()=>{
-
-}
-
-const battle = () => {
-    const monster = whichMonster()
-
-    if (firstMove() === 1){
-        monsterTurn(monster)
-    }
-
-    while (player.health>0 && monster.health>0){
-        playerTurn()
-        monsterTurn()
-    }
-
-    
+const monsterTurn = (monster) => {
+  damageMathMonster(monster);
+  attackButton.disabled = true
+  itemsButton.disabled = true
+  runButton.disabled = true 
 };
 
+const playerTurn = () => {
+  attackButton.disabled = false
+  itemsButton.disabled = false
+  runButton.disabled = false 
+};
+
+
+
 const game = () => {
-  while (win === false || restart === false) {}
+  monsters.forEach((monster, index) => {
+    // Set currentMonster as the monster
+    currentMonster = monster;
+    if (firstMove(currentMonster) === 1) {
+      monsterTurn(currentMonster);
+    }
+    // While monster has health, start a battle
+    while (currentMonster.health > 0 && player.health > 0) {
+      playerTurn()
+      monsterTurn(currentMonster)
+      // Once the monster has died, or the player has died, exit the while loop
+  
+      // Based on outcome of a battle, either go to next monster, or restart
+
+    }
+
+  });
 };

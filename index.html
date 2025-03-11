@@ -1,21 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <script src="./js/app.js" defer></script>
-    <link rel="stylesheet" href="./css/style.css">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
+  </head>
+  <body>
     <div class="start-screen">
-        <h1 id="Welcome-Text">WELCOME</h1>
-        <a href="#" class="start-button">START!!</a>
+      <h1 id="Welcome-Text">WELCOME</h1>
+      <button class="start-button">START!!</button>
     </div>
     <div class="battle">
-        <button>Attack</button>
-        <button>Run</button>
-        <button>Items</button>
+      <div class="player-actions">
+        <button disabled class = "health-potion hidden">health potion</button>
+        <button disabled class = "mana-potion hidden">mana potion</button>
+        
+        <div class="top-row">
+          <button disabled class="attack-button">Attack</button>
+          <button disabled class="items-button">Items</button>
+
+          <!-- <div class="top-row hidden"> -->
+            <button disabled class="punch hidden">Punch</button>
+            <button disabled class="kick hidden">kick</button>
+          <!-- </div> -->
+        </div>
+
+        <div class="bottom-row">
+          <button disabled class="run-button">Run</button>
+          <!-- <div class="btm-row-st-2"> -->
+            <button class="lil-fire hidden">lil fire</button>
+            <button class="big-fire hidden">big fire</button>
+          <!-- </div> -->
+        </div>
+      </div>
     </div>
-</body>
+  </body>
 </html>
