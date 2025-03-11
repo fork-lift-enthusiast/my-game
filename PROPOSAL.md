@@ -37,10 +37,24 @@ I want to make a simple turn based combat game
 - AAU if I chooses flee they have a 1.5x times higher chance of succesfully fleeing a fight
 - AAU if i chooses freeze the have 25% lower chance to succefully flee and player should gain the freeze ability causing both the enemy and player to not be able to attack for 2 turns
 ## Pseudocode
-- make an array that contains player stats speed, health,mana, and an array of attacks 
+- make an object that contains player stats speed, health,mana, and an array of attacks 
 - make an array of objects for all the different monsters that all have speed,health, and an array of difffernt attacks
 - make a battle while loop that runs while both monster and player health are above 0
+- make a who goes first function that compares monster and player speed and returns 1 if player speed is higher and 0 otherwise
+- make a damagae calculator function as of rn idk if it'll be easier to make a monster damage and player damage function or just one (i'd rather do just one but rn i just dk)
+- idk if i want to make a seprate doesAttackHit function or include it in the monster and player attack (id rather make it its own function)
+- make a player turn function that allows you to press the run, items, and fight buttons
+- fight and items should display a differnt screen in the place of the run,items,and fight buttons
+- run should end the battle, and put you back at the start 
+- fight should display 4 buttons each representing a player attack 
+- items should display health potion and mana potion 
+- when you select a button wihtin fight or a button within items it should end your turn
+- make a monster turn function that randomly selects a monster attack runs accuracy calc and damage calc 
 - 
+
+
+
+make a player turn function 
 
 
 ```
