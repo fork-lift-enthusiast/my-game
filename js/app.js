@@ -97,6 +97,7 @@ itemsButton.addEventListener("click", () => {
   });
   playerActions.style.justifyContent = "space-evenly";
 });
+
 attackButton.addEventListener("click", () => {
   console.log("hi");
   itemsButton.style.display = "none";
@@ -156,6 +157,26 @@ bigFireButton.addEventListener("click", () => {
   runButton.style.display = "inline-block";
   damageMathPlayer(monsters[0], "bigFire");
   damageMathMonster(monster);
+});
+
+manaPotionButton.addEventListener("click", () => {
+  healthPotionButton.classList.add("hidden");
+  manaPotionButton.classList.add("hidden");
+  itemsButton.style.display = "inline-block";
+  attackButton.style.display = "inline-block";
+  runButton.style.display = "inline-block";
+  console.log('hi')
+  // damageMathPlayer(monsters[0], "bigFire");
+  // damageMathMonster(monster);
+});
+healthPotionButton.addEventListener("click", () => {
+  manaPotionButton.classList.add("hidden");
+  manaPotionButton.classList.add("hidden");
+  itemsButton.style.display = "inline-block";
+  attackButton.style.display = "inline-block";
+  runButton.style.display = "inline-block";
+  // damageMathPlayer(monsters[0], "bigFire");
+  // damageMathMonster(monster);
 });
 
 // ------------------------------ FUNCTIONS ---------------------------------
