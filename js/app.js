@@ -125,7 +125,8 @@ kickButton.addEventListener("click", () => {
   itemsButton.style.display = "inline-block";
   attackButton.style.display = "inline-block";
   runButton.style.display = "inline-block";
-  damageMathPlayer(monsters[0], "kick");
+  damageMathPlayer(currentMonster, "kick");
+  damageMathMonster(currentMonster);
 });
 punchButton.addEventListener("click", () => {
   punchButton.classList.add("hidden");
@@ -135,7 +136,8 @@ punchButton.addEventListener("click", () => {
   itemsButton.style.display = "inline-block";
   attackButton.style.display = "inline-block";
   runButton.style.display = "inline-block";
-  damageMathPlayer(monsters[0], "punch");
+  damageMathPlayer(currentMonster, "punch");
+  damageMathMonster(currentMonster);
 });
 lilFireButton.addEventListener("click", () => {
   punchButton.classList.add("hidden");
@@ -145,7 +147,8 @@ lilFireButton.addEventListener("click", () => {
   itemsButton.style.display = "inline-block";
   attackButton.style.display = "inline-block";
   runButton.style.display = "inline-block";
-  damageMathPlayer(monsters[0], "lilFire");
+  damageMathPlayer(currentMonster, "lilFire");
+  damageMathMonster(currentMonster);
 });
 bigFireButton.addEventListener("click", () => {
   punchButton.classList.add("hidden");
@@ -155,8 +158,8 @@ bigFireButton.addEventListener("click", () => {
   itemsButton.style.display = "inline-block";
   attackButton.style.display = "inline-block";
   runButton.style.display = "inline-block";
-  damageMathPlayer(monsters[0], "bigFire");
-  damageMathMonster(monster);
+  damageMathPlayer(currentMonster, "bigFire");
+  damageMathMonster(currentMonster);
 });
 
 manaPotionButton.addEventListener("click", () => {
@@ -166,8 +169,8 @@ manaPotionButton.addEventListener("click", () => {
   attackButton.style.display = "inline-block";
   runButton.style.display = "inline-block";
   console.log('hi')
-  // damageMathPlayer(monsters[0], "bigFire");
-  // damageMathMonster(monster);
+  damageMathPlayer(monsters[0], "bigFire");
+  damageMathMonster(currentMonster);
 });
 healthPotionButton.addEventListener("click", () => {
   manaPotionButton.classList.add("hidden");
@@ -175,8 +178,8 @@ healthPotionButton.addEventListener("click", () => {
   itemsButton.style.display = "inline-block";
   attackButton.style.display = "inline-block";
   runButton.style.display = "inline-block";
-  // damageMathPlayer(monsters[0], "bigFire");
-  // damageMathMonster(monster);
+  damageMathPlayer(currentMonster, "bigFire");
+  damageMathMonster(currentMonster);
 });
 
 // ------------------------------ FUNCTIONS ---------------------------------
