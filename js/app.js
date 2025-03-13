@@ -79,124 +79,15 @@ const playerActions = document.querySelector(".player-actions ");
 const playerActionsBtns = document.querySelectorAll(".player-actions button");
 const topRow = document.querySelector(".top-row");
 const btmRow = document.querySelector(".bottom-row");
-// const topRowState2 = document.querySelector(".top-row-st-2");
-// const btmRowState2 = document.querySelector(".btm-row-st-2");
-itemsButton.addEventListener("click", () => {
-  itemsButton.classList.add("hidden")
-  attackButton.classList.add("hidden")
-  runButton.classList.add("hidden")
-  topRow.classList.add("hidden")
-  btmRow.classList.add("hidden")
-  manaPotionButton.classList.remove("hidden");
-  healthPotionButton.classList.remove("hidden");
-  healthPotionButton.style.display = "flex";
-  manaPotionButton.style.display = "flex";
-  playerActions.style.flexDirection = "row";
-  playerActionsBtns.forEach((el) => {
-    el.style.height = "50%";
-  });
-  playerActions.style.justifyContent = "space-evenly";
-});
-
-attackButton.addEventListener("click", () => {
-  console.log("hi");
-  itemsButton.style.display = "none";
-  attackButton.style.display = "none";
-  runButton.style.display = "none";
-  // topRowState2.style.display = "flex";
-  // btmRowState2.style.display = "flex";
-  punchButton.classList.remove("hidden");
-  kickButton.classList.remove("hidden");
-  lilFireButton.classList.remove("hidden");
-  bigFireButton.classList.remove("hidden");
-});
-
-startButton.addEventListener("click", () => {
-  const startScreen = document.querySelector(".start-screen");
+const startScreen = document.querySelector(".start-screen");
+const startGame = () => {
+  // const startScreen = document.querySelector(".start-screen");
   startScreen.style.display = "none";
   playerActions.style.display = "flex";
-  game()
-});
+  game();
+}
 
-// kickButton.addEventListener("click", () => {
-//   punchButton.classList.add("hidden");
-//   kickButton.classList.add("hidden");
-//   lilFireButton.classList.add("hidden");
-//   bigFireButton.classList.add("hidden");
-//   itemsButton.style.display = "inline-block";
-//   attackButton.style.display = "inline-block";
-//   runButton.style.display = "inline-block";
-//   handlePlayerAttack("kick", currentMonster);
-//   damageMathMonster(currentMonster);
-// });
-// punchButton.addEventListener("click", () => {
-//   punchButton.classList.add("hidden");
-//   kickButton.classList.add("hidden");
-//   lilFireButton.classList.add("hidden");
-//   bigFireButton.classList.add("hidden");
-//   itemsButton.style.display = "inline-block";
-//   attackButton.style.display = "inline-block";
-//   runButton.style.display = "inline-block";
-//   handlePlayerAttack("punch", currentMonster);;
-//   damageMathMonster(currentMonster);
-// });
-// lilFireButton.addEventListener("click", () => {
-//   punchButton.classList.add("hidden");
-//   kickButton.classList.add("hidden");
-//   lilFireButton.classList.add("hidden");
-//   bigFireButton.classList.add("hidden");
-//   itemsButton.style.display = "inline-block";
-//   attackButton.style.display = "inline-block";
-//   runButton.style.display = "inline-block";
-//   handlePlayerAttack("lilFire", currentMonster);
-//   damageMathMonster(currentMonster);
-// });
-// bigFireButton.addEventListener("click", () => {
-//   punchButton.classList.add("hidden");
-//   kickButton.classList.add("hidden");
-//   lilFireButton.classList.add("hidden");
-//   bigFireButton.classList.add("hidden");
-//   itemsButton.style.display = "inline-block";
-//   attackButton.style.display = "inline-block";
-//   runButton.style.display = "inline-block";
-//   handlePlayerAttack("bigFire", currentMonster);
-//   damageMathMonster(currentMonster);
-// });
-
-// manaPotionButton.addEventListener("click", () => {
-//   healthPotionButton.classList.add("hidden");
-//   manaPotionButton.classList.add("hidden");
-//   healthPotionButton.style.display = "none";
-//   manaPotionButton.style.display = "none";
-//   topRow.classList.remove("hidden")
-//   btmRow.classList.remove("hidden")
-//   itemsButton.classList.remove("hidden")
-//   attackButton.classList.remove("hidden")
-//   runButton.classList.remove("hidden")
-//   playerActions.style.flexDirection = "column" 
-//   playerActionsBtns.forEach((el) => {
-//     el.style.height = "95%";
-//   });
-//   console.log("hi");
-//   damageMathMonster(currentMonster);
-// });
-// healthPotionButton.addEventListener("click", () => {
-//   healthPotionButton.classList.add("hidden");
-//   manaPotionButton.classList.add("hidden");
-//   healthPotionButton.style.display = "none";
-//   manaPotionButton.style.display = "none";
-//   topRow.classList.remove("hidden")
-//   btmRow.classList.remove("hidden")
-//   itemsButton.classList.remove("hidden")
-//   attackButton.classList.remove("hidden")
-//   runButton.classList.remove("hidden")
-//   playerActions.style.flexDirection = "column" 
-//   playerActionsBtns.forEach((el) => {
-//     el.style.height = "95%";
-//   });
-//   console.log("hi");
-//   damageMathMonster(currentMonster);
-// });
+startButton.addEventListener("click", startGame);
 
 // ------------------------------ FUNCTIONS ---------------------------------
 const whichMonster = () => {
@@ -218,14 +109,22 @@ const damageMathPlayer = (monster, attack) => {
   let accuracy = player.attacks[attack].accuracy;
   let damage = player.attacks[attack].damage;
   let random = Math.random();
-  console.log("Acuuracy: ", accuracy, " Random: ", random)
+  console.log("Acuuracy: ", accuracy, " Random: ", random);
   if (random < accuracy) {
     monster.health -= damage;
   }
 };
-
+const potionMath =(potion)=>{
+if (potion === "mana"){
+  player.mana += 50 
+}
+else if (potion === "health"){
+  player.health +=50
+}
+}
 const damageMathMonster = (monster) => {
-  let selectedAttack = monster.attacks[Math.floor(Math.random() * monster.attacks.length)];
+  let selectedAttack =
+    monster.attacks[Math.floor(Math.random() * monster.attacks.length)];
   if (Math.random() < selectedAttack.accuracy) {
     player.health -= selectedAttack.damage;
   }
@@ -238,11 +137,6 @@ const monsterTurn = (monster) => {
   runButton.disabled = true;
 };
 
-// const playerTurn = () => {
-//   attackButton.disabled = false;
-//   itemsButton.disabled = false;
-//   runButton.disabled = false;
-// };
 // Simulating async player turn
 const playerTurn = () => {
   attackButton.disabled = false;
@@ -250,74 +144,112 @@ const playerTurn = () => {
   runButton.disabled = false;
 
   return new Promise((resolve) => {
-    topRow.addEventListener("click", (e) => {
-      console.log(e.target)
+    const handleTopRowClick = (e) => {
+      console.log("Clicked on:", e.target);
+
       if (e.target.classList.contains("attack-button")) {
-        // attack button sequence
-        document.querySelector(".attack-button").addEventListener(
-          "click",
-          () => {
-            console.log("Player attacks!");
-            [kickButton, punchButton, lilFireButton, bigFireButton].forEach(
-              (atkButtons) => {
-                atkButtons.addEventListener("click", (e) => {
-                  punchButton.classList.add("hidden");
-                  kickButton.classList.add("hidden");
-                  lilFireButton.classList.add("hidden");
-                  bigFireButton.classList.add("hidden");
-                  itemsButton.style.display = "inline-block";
-                  attackButton.style.display = "inline-block";
-                  runButton.style.display = "inline-block";
-                  damageMathPlayer(currentMonster, e.target.dataset.attack);
-                  resolve(); // Player action completed, proceed to monster turn
-                });
-              }
+        e.stopPropagation(); // Prevents parent `topRow` from handling this event
+        console.log("Player attacks!");
+
+        // Hide Buttons
+        itemsButton.style.display = "none";
+        attackButton.style.display = "none";
+        runButton.style.display = "none";
+
+        // Show attack buttons
+        punchButton.classList.remove("hidden");
+        kickButton.classList.remove("hidden");
+        lilFireButton.classList.remove("hidden");
+        bigFireButton.classList.remove("hidden");
+
+        // Listen for attack selection
+        [kickButton, punchButton, lilFireButton, bigFireButton].forEach(
+          (atkButton) => {
+            atkButton.addEventListener(
+              "click",
+              (event) => {
+                event.stopPropagation(); // Ensure attack click doesn't bubble up
+
+                console.log(`Player used ${event.target.dataset.attack}`);
+
+                // Hide attack buttons after selection
+                punchButton.classList.add("hidden");
+                kickButton.classList.add("hidden");
+                lilFireButton.classList.add("hidden");
+                bigFireButton.classList.add("hidden");
+
+                // Show main buttons again
+                itemsButton.style.display = "inline-block";
+                attackButton.style.display = "inline-block";
+                runButton.style.display = "inline-block";
+
+                // Apply attack damage
+                damageMathPlayer(currentMonster, event.target.dataset.attack);
+
+                // Resolve the player's turn
+                resolve();
+              },
+              { once: true } // Ensures attack buttons are only clicked once per turn
             );
-          },
-          { once: true }
-        ); // Ensure event listener runs only once per turn
-      } else if (e.target.classList.contains("items-button")) {
-        document.querySelector(".items-button").addEventListener(
-          "click", 
-          ()=>{
-              console.log("player used an item")
-              [manaPotionButton, healthPotionButton].forEach((potionbutton)=> {
-                healthPotionButton.classList.add("hidden");
-                manaPotionButton.classList.add("hidden");
-                healthPotionButton.style.display = "none";
-                manaPotionButton.style.display = "none";
-                topRow.classList.remove("hidden")
-                btmRow.classList.remove("hidden")
-                itemsButton.classList.remove("hidden")
-                attackButton.classList.remove("hidden")
-                runButton.classList.remove("hidden")
-                playerActions.style.flexDirection = "column" 
-                playerActionsBtns.forEach((el) => {
-                  el.style.height = "95%";
-                });
-              })
-            })
           }
-        })
-        
-      });
+        );
+      } else if (e.target.classList.contains("items-button")) {
+        e.stopPropagation(); // Prevents `topRow` from handling this event
+        console.log("Player used an item");
+
+        // Hide main buttons
+        itemsButton.style.display = "none";
+        attackButton.style.display = "none";
+        runButton.style.display = "none";
+
+        // Show potions
+        manaPotionButton.classList.remove("hidden");
+        healthPotionButton.classList.remove("hidden");
+
+        // Allow potion selection
+        [manaPotionButton, healthPotionButton].forEach((potionButton) => {
+          potionButton.addEventListener(
+            "click",
+            (event) => {
+              event.stopPropagation();
+
+              console.log(
+                `Player used ${
+                  event.target.classList.contains("mana-potion")
+                    ? "Mana Potion"
+                    : "Health Potion"
+                }`
+              );
+              potionMath(event.target.dataset.potion)
+              // Hide potions and restore UI
+              manaPotionButton.classList.add("hidden");
+              healthPotionButton.classList.add("hidden");
+              
+              // Show main buttons again
+              itemsButton.style.display = "inline-block";
+              attackButton.style.display = "inline-block";
+              runButton.style.display = "inline-block";
+
+              resolve(); // End turn after using item
+            },
+            { once: true }
+          );
+        });
+      } else if (e.target.classList.contains("run-button")) {
+        startButton.removeEventListener("click", startGame);
+        startScreen.style.display = "flex";
+      playerActions.style.display = "none";
+        startButton.addEventListener("click", startGame);
+
+      }
+    };
+
+    // Attach event listener only ONCE per turn
+    // topRow.addEventListener("click", handleTopRowClick, { once: true });
+    playerActions.addEventListener("click", handleTopRowClick, { once: true });
+  });
 };
 
-// const game = () => {
-//   monsters.forEach((monster, index) => {
-//     currentMonster = monster;
-//     if (firstMove(currentMonster) === 1) {
-//       monsterTurn(currentMonster);
-//     }
-//     while (currentMonster.health > 0 && player.health > 0) {
-//       playerTurn();
-//       monsterTurn(currentMonster);
-//       // Once the monster has died, or the player has died, exit the while loop
-
-//       // Based on outcome of a battle, either go to next monster, or restart
-//     }
-//   });
-// };
 const takeTurns = async () => {
   if (currentMonster.health <= 0 || player.health <= 0) {
     console.log("Battle Over");
@@ -344,6 +276,7 @@ const takeTurns = async () => {
       setTimeout(takeTurns, 500); // Continue the loop after another delay
     } else {
       console.log("Player defeated!");
+      
     }
   }, 500);
 };
@@ -357,11 +290,3 @@ const game = () => {
 
   takeTurns();
 };
-// const handlePlayerAttack = (attackType, monster) => {
-//   damageMathPlayer(monster, attackType);
-//   console.log('you killed that mf asf');
-//   if (monster.health <= 0) {
-//     return;
-//   }
-//   damageMathMonster(monster);
-// };
