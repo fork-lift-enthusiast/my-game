@@ -87,11 +87,6 @@ itemsButton.addEventListener("click", () => {
   runButton.classList.add("hidden")
   topRow.classList.add("hidden")
   btmRow.classList.add("hidden")
-  // itemsButton.style.display = "none";
-  // attackButton.style.display = "none";
-  // runButton.style.display = "none";
-  // topRow.style.display = "none";
-  // btmRow.style.display = "none";
   manaPotionButton.classList.remove("hidden");
   healthPotionButton.classList.remove("hidden");
   healthPotionButton.style.display = "flex";
@@ -120,6 +115,7 @@ startButton.addEventListener("click", () => {
   const startScreen = document.querySelector(".start-screen");
   startScreen.style.display = "none";
   playerActions.style.display = "flex";
+  currentMonster = whichMonster();
 });
 
 kickButton.addEventListener("click", () => {
@@ -130,7 +126,7 @@ kickButton.addEventListener("click", () => {
   itemsButton.style.display = "inline-block";
   attackButton.style.display = "inline-block";
   runButton.style.display = "inline-block";
-  damageMathPlayer(currentMonster, "kick");
+  handlePlayerAttack("kick", currentMonster);
   damageMathMonster(currentMonster);
 });
 punchButton.addEventListener("click", () => {
@@ -141,7 +137,7 @@ punchButton.addEventListener("click", () => {
   itemsButton.style.display = "inline-block";
   attackButton.style.display = "inline-block";
   runButton.style.display = "inline-block";
-  damageMathPlayer(currentMonster, "punch");
+  handlePlayerAttack("punch", currentMonster);;
   damageMathMonster(currentMonster);
 });
 lilFireButton.addEventListener("click", () => {
@@ -152,7 +148,7 @@ lilFireButton.addEventListener("click", () => {
   itemsButton.style.display = "inline-block";
   attackButton.style.display = "inline-block";
   runButton.style.display = "inline-block";
-  damageMathPlayer(currentMonster, "lilFire");
+  handlePlayerAttack("lilFire", currentMonster);
   damageMathMonster(currentMonster);
 });
 bigFireButton.addEventListener("click", () => {
@@ -163,7 +159,7 @@ bigFireButton.addEventListener("click", () => {
   itemsButton.style.display = "inline-block";
   attackButton.style.display = "inline-block";
   runButton.style.display = "inline-block";
-  damageMathPlayer(currentMonster, "bigFire");
+  handlePlayerAttack("bigFire", currentMonster);
   damageMathMonster(currentMonster);
 });
 
@@ -248,12 +244,10 @@ const playerTurn = () => {
 
 const game = () => {
   monsters.forEach((monster, index) => {
-    // Set currentMonster as the monster
     currentMonster = monster;
     if (firstMove(currentMonster) === 1) {
       monsterTurn(currentMonster);
     }
-    // While monster has health, start a battle
     while (currentMonster.health > 0 && player.health > 0) {
       playerTurn();
       monsterTurn(currentMonster);
@@ -262,4 +256,12 @@ const game = () => {
       // Based on outcome of a battle, either go to next monster, or restart
     }
   });
+};
+const handlePlayerAttack = (attackType, monster) => {
+  damageMathPlayer(monster, attackType);
+  console.log('you killed that mf asf');
+  if (monster.health <= 0) {
+    return;
+  }
+  damageMathMonster(monster);
 };
