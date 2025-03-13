@@ -19,7 +19,7 @@ let player = {
     bigFire: { accuracy: 0.6, damage: 60, cost: 20 },
   },
 };
-
+const healthCheck = {spider:50,slime:75,zombie:100,wolf:50}
 let monsters = [
   {
     name: "spider",
@@ -264,7 +264,12 @@ const takeTurns = async () => {
 
   if (currentMonster.health <= 0) {
     console.log("Monster defeated!");
-    // monsters.splice(currentMonster.)
+    const monsterIndex = monsters.findIndex((monster)=>{
+      return monster.name === currentMonster.name 
+    })
+    monsters.splice(monsterIndex,1)
+    game()
+
     return;
   }
 
@@ -275,18 +280,27 @@ const takeTurns = async () => {
     if (player.health > 0) {
       setTimeout(takeTurns, 500); // Continue the loop after another delay
     } else {
+      player.health = 100
+      monsterName = currentMonster.name
+      currentMonster.health = healthCheck[monsterName]
+      startScreen.style.display = "flex";
+      playerActions.style.display = "none";
       console.log("Player defeated!");
-      
+
     }
   }, 500);
 };
 
 const game = () => {
-  currentMonster = whichMonster();
+  if (monsters.length !== 0)
+  {currentMonster = whichMonster();
   if (firstMove(currentMonster) === 1) {
     console.log("Monster attacks first");
     monsterTurn(currentMonster);
   }
 
   takeTurns();
+} else {
+  console.log("you beat the game")
+}
 };
