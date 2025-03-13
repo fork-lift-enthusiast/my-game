@@ -101,9 +101,7 @@ body {
     display:none;
 } */
 
-.hidden {
-    display: none;
-}
+
 .mana-potion{
     justify-content: space-evenly;
     align-items: center;
@@ -111,4 +109,7 @@ body {
 .health-potion{
     justify-content: space-evenly;
     align-items: center;
+}
+.hidden {
+    display: none;
 }

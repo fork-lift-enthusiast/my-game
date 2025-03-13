@@ -82,11 +82,16 @@ const btmRow = document.querySelector(".bottom-row");
 // const topRowState2 = document.querySelector(".top-row-st-2");
 // const btmRowState2 = document.querySelector(".btm-row-st-2");
 itemsButton.addEventListener("click", () => {
-  itemsButton.style.display = "none";
-  attackButton.style.display = "none";
-  runButton.style.display = "none";
-  topRow.style.display = "none";
-  btmRow.style.display = "none";
+  itemsButton.classList.add("hidden")
+  attackButton.classList.add("hidden")
+  runButton.classList.add("hidden")
+  topRow.classList.add("hidden")
+  btmRow.classList.add("hidden")
+  // itemsButton.style.display = "none";
+  // attackButton.style.display = "none";
+  // runButton.style.display = "none";
+  // topRow.style.display = "none";
+  // btmRow.style.display = "none";
   manaPotionButton.classList.remove("hidden");
   healthPotionButton.classList.remove("hidden");
   healthPotionButton.style.display = "flex";
@@ -165,24 +170,35 @@ bigFireButton.addEventListener("click", () => {
 manaPotionButton.addEventListener("click", () => {
   healthPotionButton.classList.add("hidden");
   manaPotionButton.classList.add("hidden");
-  manaPotionButton.style.display = "none";
   healthPotionButton.style.display = "none";
-  itemsButton.style.display = "inline-block";
-  attackButton.style.display = "inline-block";
-  runButton.style.display = "inline-block";
+  manaPotionButton.style.display = "none";
+  topRow.classList.remove("hidden")
+  btmRow.classList.remove("hidden")
+  itemsButton.classList.remove("hidden")
+  attackButton.classList.remove("hidden")
+  runButton.classList.remove("hidden")
+  playerActions.style.flexDirection = "column" 
+  playerActionsBtns.forEach((el) => {
+    el.style.height = "95%";
+  });
   console.log("hi");
-  damageMathPlayer(currentMonster, "bigFire");
   damageMathMonster(currentMonster);
 });
 healthPotionButton.addEventListener("click", () => {
+  healthPotionButton.classList.add("hidden");
   manaPotionButton.classList.add("hidden");
-  manaPotionButton.classList.add("hidden");
-  manaPotionButton.style.display = "none";
   healthPotionButton.style.display = "none";
-  itemsButton.style.display = "inline-block";
-  attackButton.style.display = "inline-block";
-  runButton.style.display = "inline-block";
-  damageMathPlayer(currentMonster, "bigFire");
+  manaPotionButton.style.display = "none";
+  topRow.classList.remove("hidden")
+  btmRow.classList.remove("hidden")
+  itemsButton.classList.remove("hidden")
+  attackButton.classList.remove("hidden")
+  runButton.classList.remove("hidden")
+  playerActions.style.flexDirection = "column" 
+  playerActionsBtns.forEach((el) => {
+    el.style.height = "95%";
+  });
+  console.log("hi");
   damageMathMonster(currentMonster);
 });
 
