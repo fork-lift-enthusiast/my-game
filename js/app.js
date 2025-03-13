@@ -110,11 +110,11 @@ attackButton.addEventListener("click", () => {
   lilFireButton.classList.remove("hidden");
   bigFireButton.classList.remove("hidden");
 });
+
 startButton.addEventListener("click", () => {
   const startScreen = document.querySelector(".start-screen");
   startScreen.style.display = "none";
   playerActions.style.display = "flex";
-
 });
 
 kickButton.addEventListener("click", () => {
@@ -165,16 +165,20 @@ bigFireButton.addEventListener("click", () => {
 manaPotionButton.addEventListener("click", () => {
   healthPotionButton.classList.add("hidden");
   manaPotionButton.classList.add("hidden");
+  manaPotionButton.style.display = "none";
+  healthPotionButton.style.display = "none";
   itemsButton.style.display = "inline-block";
   attackButton.style.display = "inline-block";
   runButton.style.display = "inline-block";
-  console.log('hi')
-  damageMathPlayer(monsters[0], "bigFire");
+  console.log("hi");
+  damageMathPlayer(currentMonster, "bigFire");
   damageMathMonster(currentMonster);
 });
 healthPotionButton.addEventListener("click", () => {
   manaPotionButton.classList.add("hidden");
   manaPotionButton.classList.add("hidden");
+  manaPotionButton.style.display = "none";
+  healthPotionButton.style.display = "none";
   itemsButton.style.display = "inline-block";
   attackButton.style.display = "inline-block";
   runButton.style.display = "inline-block";
@@ -205,6 +209,7 @@ const damageMathPlayer = (monster, attack) => {
     monster.health -= damage;
   }
 };
+
 const damageMathMonster = (monster) => {
   let selectedAttack = monster.attacks[Math.floor(Math.random() * 3)];
   if (Math.random() < selectedAttack.accuracy) {
@@ -214,18 +219,16 @@ const damageMathMonster = (monster) => {
 
 const monsterTurn = (monster) => {
   damageMathMonster(monster);
-  attackButton.disabled = true
-  itemsButton.disabled = true
-  runButton.disabled = true 
+  attackButton.disabled = true;
+  itemsButton.disabled = true;
+  runButton.disabled = true;
 };
 
 const playerTurn = () => {
-  attackButton.disabled = false
-  itemsButton.disabled = false
-  runButton.disabled = false 
+  attackButton.disabled = false;
+  itemsButton.disabled = false;
+  runButton.disabled = false;
 };
-
-
 
 const game = () => {
   monsters.forEach((monster, index) => {
@@ -236,13 +239,11 @@ const game = () => {
     }
     // While monster has health, start a battle
     while (currentMonster.health > 0 && player.health > 0) {
-      playerTurn()
-      monsterTurn(currentMonster)
+      playerTurn();
+      monsterTurn(currentMonster);
       // Once the monster has died, or the player has died, exit the while loop
-  
+
       // Based on outcome of a battle, either go to next monster, or restart
-
     }
-
   });
 };
