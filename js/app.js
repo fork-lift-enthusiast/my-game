@@ -5,6 +5,20 @@ let currentMonster;
 let currentTurn;
 
 // ------------------------------- OBJECTS ----------------------------------
+let playerCheck = {
+  health: 100,
+  speed: 10,
+  armor: 0,
+  mana: 50,
+  strength: 1,
+  inventory: [],
+  attacks: {
+    punch: { accuracy: 0.9, damage: 25, cost: 0 },
+    kick: { accuracy: 0.7, damage: 35, cost: 0 },
+    lilFire: { accuracy: 0.8, damage: 45, cost: 10 },
+    bigFire: { accuracy: 0.6, damage: 60, cost: 20 },
+  },
+};
 let player = {
   health: 100,
   speed: 10,
@@ -20,9 +34,11 @@ let player = {
   },
 };
 const healthCheck = {spider:50,slime:75,zombie:100,wolf:50}
+
 let monsters = [
   {
     name: "spider",
+    baseAsset: "./assets/battle.jpeg",
     health: 50,
     speed: 5,
     armor: 0.95,
@@ -62,7 +78,12 @@ let monsters = [
     ],
   },
 ];
-
+const displayMessage = document.querySelector("#Welcome-Text")
+const monsterHealth = document.querySelector(".monster-Health-Tracker")
+const playerHealth = document.querySelector(".health-tracker")
+const playerMana = document.querySelector(".mana-tracker")
+const playerAsset = document.querySelector(".player-asset")
+const monsterAsset = document.querySelector(".monster-asset")
 const fearReactions = ["fight", "flight", "freeze"];
 const startButton = document.querySelector(".start-button");
 const battleScreen = document.querySelector(".battle");
@@ -84,6 +105,7 @@ const startGame = () => {
   // const startScreen = document.querySelector(".start-screen");
   startScreen.style.display = "none";
   playerActions.style.display = "flex";
+  battleScreen.classList.remove('hidden')
   game();
 }
 
@@ -111,7 +133,18 @@ const damageMathPlayer = (monster, attack) => {
   let random = Math.random();
   console.log("Acuuracy: ", accuracy, " Random: ", random);
   if (random < accuracy) {
+    let currentPercentage = (monster.health - damage)/healthCheck[monster.name]
     monster.health -= damage;
+    console.log(`monster health: ${monster.health}`)
+    console.log(`damage: ${damage}`)
+    console.log(`health check: ${healthCheck[monster.name]}`)
+    console.log(currentPercentage)
+    console.log(monsterHealth)
+    if (currentPercentage<0){
+
+      monsterHealth.style.width = "0%"
+    }
+    monsterHealth.style.width = `${currentPercentage *100}%`
   }
 };
 const potionMath =(potion)=>{
@@ -126,7 +159,17 @@ const damageMathMonster = (monster) => {
   let selectedAttack =
     monster.attacks[Math.floor(Math.random() * monster.attacks.length)];
   if (Math.random() < selectedAttack.accuracy) {
+    let currentPercentage =(player.health-selectedAttack.damage)/playerCheck.health
+    console.log(`player health: ${player.health}`)
+    console.log(`damage: ${selectedAttack.damage}`)
+    console.log(`health check: ${playerCheck.health}`)
+    console.log(currentPercentage)
+    console.log(playerHealth)
     player.health -= selectedAttack.damage;
+    if(currentPercentage<0){
+      playerHealth.style.width = "0%"
+    }
+    playerHealth.style.width =`${currentPercentage*100}%`
   }
 };
 
@@ -284,7 +327,9 @@ const takeTurns = async () => {
       monsterName = currentMonster.name
       currentMonster.health = healthCheck[monsterName]
       startScreen.style.display = "flex";
-      playerActions.style.display = "none";
+      
+      battleScreen.style.display = "none";
+      displayMessage.innerText ="Player Defeated"
       console.log("Player defeated!");
 
     }
