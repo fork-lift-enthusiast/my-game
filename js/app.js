@@ -78,6 +78,10 @@ let monsters = [
     ],
   },
 ];
+
+const punchImages = ["./assets/baseAsset.png", "./assets/punch1.png", "./assets/punch2.png","./assets/punch1.png","./assets/baseAsset.png"]
+let punchIndex = 0
+
 const displayMessage = document.querySelector("#Welcome-Text")
 const monsterHealth = document.querySelector(".monster-Health-Tracker")
 const playerHealth = document.querySelector(".health-tracker")
@@ -215,6 +219,10 @@ const playerTurn = () => {
 
                 console.log(`Player used ${event.target.dataset.attack}`);
 
+                if (event.target.dataset.attack === "punch") {
+                  animateImages()
+                }
+
                 // Hide attack buttons after selection
                 punchButton.classList.add("hidden");
                 kickButton.classList.add("hidden");
@@ -349,3 +357,16 @@ const game = () => {
   console.log("you beat the game")
 }
 };
+
+
+function animateImages(){
+  if (punchIndex >= punchImages.length) {
+    punchIndex = 0
+    return
+  }
+
+  playerAsset.src = punchImages[punchIndex]
+  punchIndex++
+
+  setTimeout(animateImages, 200)
+}
