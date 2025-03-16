@@ -34,7 +34,49 @@ let player = {
   },
 };
 const healthCheck = {spider:50,slime:75,zombie:100,wolf:50}
-
+let monsterReset = [
+  {
+    name: "spider",
+    baseAsset: "./assets/battle.jpeg",
+    health: 50,
+    speed: 5,
+    armor: 0.95,
+    attacks: [
+      { name: "fang-stab", accuracy: 0.6, damage: 35 },
+      { name: "stomp", accuracy: 0.9, damage: 20 },
+    ],
+  },
+  {
+    name: "slime",
+    health: 75,
+    speed: 2,
+    armor: 1,
+    attacks: [
+      { name: "slime-spit", accuracy: 0.4, damage: 40 },
+      { name: "crush", accuracy: 0.3, damage: 50 },
+    ],
+  },
+  {
+    name: "zombie",
+    health: 100,
+    speed: 7,
+    armor: 0.9,
+    attacks: [
+      { name: "sword-slash", accuracy: 0.7, damage: 25 },
+      { name: "bite", accuracy: 0.2, damage: 100 },
+    ],
+  },
+  {
+    name: "wolf",
+    health: 50,
+    speed: 15,
+    armor: 1,
+    attacks: [
+      { name: "slash", accuracy: 0.9, damage: 15 },
+      { name: "bite", accuracy: 0.7, damage: 35 },
+    ],
+  },
+];
 let monsters = [
   {
     name: "spider",
@@ -110,6 +152,9 @@ const startGame = () => {
   startScreen.style.display = "none";
   playerActions.style.display = "flex";
   battleScreen.classList.remove('hidden')
+  battleScreen.style.display ='flex';
+  playerHealth.style.width = '100%'
+  monsterHealth.style.width = '100%'
   game();
 }
 
@@ -157,6 +202,11 @@ if (potion === "mana"){
 }
 else if (potion === "health"){
   player.health +=50
+  let currentPercentage =(player.health+50)/playerCheck.health
+  if (currentPercentage>= 1){
+    playerHealth.style.width = '100%'
+  }
+  else {playerHealth.style.width =`${currentPercentage*100}%`}
 }
 }
 const damageMathMonster = (monster) => {
@@ -289,8 +339,9 @@ const playerTurn = () => {
       } else if (e.target.classList.contains("run-button")) {
         startButton.removeEventListener("click", startGame);
         startScreen.style.display = "flex";
-      playerActions.style.display = "none";
+        battleScreen.style.display = "none";
         startButton.addEventListener("click", startGame);
+
 
       }
     };
@@ -319,9 +370,21 @@ const takeTurns = async () => {
       return monster.name === currentMonster.name 
     })
     monsters.splice(monsterIndex,1)
+    resetHealthBar = ()=>{
+      monsterHealth.style.width = "100%"
+    }
+    setTimeout(resetHealthBar,1500)
+    if (monsters.length === 0){
+      displayMessage.innerText = "you won"
+      startScreen.style.display = "flex";
+      battleScreen.style.display = "none";
+      monsters = monsterReset
+    }
+    else{
     game()
-
+    }
     return;
+
   }
 
   console.log("Monster's Turn");
@@ -339,6 +402,8 @@ const takeTurns = async () => {
       battleScreen.style.display = "none";
       displayMessage.innerText ="Player Defeated"
       console.log("Player defeated!");
+      playerHealth.style.width = "100%"
+      monsters = monsterReset
 
     }
   }, 500);
@@ -349,7 +414,7 @@ const game = () => {
   {currentMonster = whichMonster();
   if (firstMove(currentMonster) === 1) {
     console.log("Monster attacks first");
-    monsterTurn(currentMonster);
+    monsterTurn(currentMonster);4
   }
 
   takeTurns();
