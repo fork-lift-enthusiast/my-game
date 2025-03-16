@@ -33,7 +33,7 @@ let player = {
     bigFire: { accuracy: 0.6, damage: 60, cost: 20 },
   },
 };
-const healthCheck = {spider:50,slime:75,zombie:100,wolf:50}
+const healthCheck = { spider: 50, slime: 75, zombie: 100, wolf: 50 };
 let monsterReset = [
   {
     name: "spider",
@@ -121,15 +121,21 @@ let monsters = [
   },
 ];
 
-const punchImages = ["./assets/baseAsset.png", "./assets/punch1.png", "./assets/punch2.png","./assets/punch1.png","./assets/baseAsset.png"]
-let punchIndex = 0
+const punchImages = [
+  "./assets/baseAsset.png",
+  "./assets/punch1.png",
+  "./assets/punch2.png",
+  "./assets/punch1.png",
+  "./assets/baseAsset.png",
+];
+let punchIndex = 0;
 
-const displayMessage = document.querySelector("#Welcome-Text")
-const monsterHealth = document.querySelector(".monster-Health-Tracker")
-const playerHealth = document.querySelector(".health-tracker")
-const playerMana = document.querySelector(".mana-tracker")
-const playerAsset = document.querySelector(".player-asset")
-const monsterAsset = document.querySelector(".monster-asset")
+const displayMessage = document.querySelector("#Welcome-Text");
+const monsterHealth = document.querySelector(".monster-Health-Tracker");
+const playerHealth = document.querySelector(".health-tracker");
+const playerMana = document.querySelector(".mana-tracker");
+const playerAsset = document.querySelector(".player-asset");
+const monsterAsset = document.querySelector(".monster-asset");
 const fearReactions = ["fight", "flight", "freeze"];
 const startButton = document.querySelector(".start-button");
 const battleScreen = document.querySelector(".battle");
@@ -151,12 +157,12 @@ const startGame = () => {
   // const startScreen = document.querySelector(".start-screen");
   startScreen.style.display = "none";
   playerActions.style.display = "flex";
-  battleScreen.classList.remove('hidden')
-  battleScreen.style.display ='flex';
-  playerHealth.style.width = '100%'
-  monsterHealth.style.width = '100%'
+  battleScreen.classList.remove("hidden");
+  battleScreen.style.display = "flex";
+  playerHealth.style.width = "100%";
+  monsterHealth.style.width = "100%";
   game();
-}
+};
 
 startButton.addEventListener("click", startGame);
 
@@ -182,48 +188,49 @@ const damageMathPlayer = (monster, attack) => {
   let random = Math.random();
   console.log("Acuuracy: ", accuracy, " Random: ", random);
   if (random < accuracy) {
-    let currentPercentage = (monster.health - damage)/healthCheck[monster.name]
+    let currentPercentage =
+      (monster.health - damage) / healthCheck[monster.name];
     monster.health -= damage;
-    console.log(`monster health: ${monster.health}`)
-    console.log(`damage: ${damage}`)
-    console.log(`health check: ${healthCheck[monster.name]}`)
-    console.log(currentPercentage)
-    console.log(monsterHealth)
-    if (currentPercentage<0){
-
-      monsterHealth.style.width = "0%"
+    console.log(`monster health: ${monster.health}`);
+    console.log(`damage: ${damage}`);
+    console.log(`health check: ${healthCheck[monster.name]}`);
+    console.log(currentPercentage);
+    console.log(monsterHealth);
+    if (currentPercentage < 0) {
+      monsterHealth.style.width = "0%";
     }
-    monsterHealth.style.width = `${currentPercentage *100}%`
+    monsterHealth.style.width = `${currentPercentage * 100}%`;
   }
 };
-const potionMath =(potion)=>{
-if (potion === "mana"){
-  player.mana += 50 
-}
-else if (potion === "health"){
-  player.health +=50
-  let currentPercentage =(player.health+50)/playerCheck.health
-  if (currentPercentage>= 1){
-    playerHealth.style.width = '100%'
+const potionMath = (potion) => {
+  if (potion === "mana") {
+    player.mana += 50;
+  } else if (potion === "health") {
+    player.health += 50;
+    let currentPercentage = player.health / playerCheck.health;
+    if (currentPercentage >= 1) {
+      playerHealth.style.width = "100%";
+    } else {
+      playerHealth.style.width = `${currentPercentage * 100}%`;
+    }
   }
-  else {playerHealth.style.width =`${currentPercentage*100}%`}
-}
-}
+};
 const damageMathMonster = (monster) => {
   let selectedAttack =
     monster.attacks[Math.floor(Math.random() * monster.attacks.length)];
   if (Math.random() < selectedAttack.accuracy) {
-    let currentPercentage =(player.health-selectedAttack.damage)/playerCheck.health
-    console.log(`player health: ${player.health}`)
-    console.log(`damage: ${selectedAttack.damage}`)
-    console.log(`health check: ${playerCheck.health}`)
-    console.log(currentPercentage)
-    console.log(playerHealth)
+    let currentPercentage =
+      (player.health - selectedAttack.damage) / playerCheck.health;
+    console.log(`player health: ${player.health}`);
+    console.log(`damage: ${selectedAttack.damage}`);
+    console.log(`health check: ${playerCheck.health}`);
+    console.log(currentPercentage);
+    console.log(playerHealth);
     player.health -= selectedAttack.damage;
-    if(currentPercentage<0){
-      playerHealth.style.width = "0%"
+    if (currentPercentage < 0) {
+      playerHealth.style.width = "0%";
     }
-    playerHealth.style.width =`${currentPercentage*100}%`
+    playerHealth.style.width = `${currentPercentage * 100}%`;
   }
 };
 
@@ -270,7 +277,7 @@ const playerTurn = () => {
                 console.log(`Player used ${event.target.dataset.attack}`);
 
                 if (event.target.dataset.attack === "punch") {
-                  animateImages()
+                  animateImages();
                 }
 
                 // Hide attack buttons after selection
@@ -321,11 +328,11 @@ const playerTurn = () => {
                     : "Health Potion"
                 }`
               );
-              potionMath(event.target.dataset.potion)
+              potionMath(event.target.dataset.potion);
               // Hide potions and restore UI
               manaPotionButton.classList.add("hidden");
               healthPotionButton.classList.add("hidden");
-              
+
               // Show main buttons again
               itemsButton.style.display = "inline-block";
               attackButton.style.display = "inline-block";
@@ -338,11 +345,10 @@ const playerTurn = () => {
         });
       } else if (e.target.classList.contains("run-button")) {
         startButton.removeEventListener("click", startGame);
+        displayMessage.innerText = "Welcome";
         startScreen.style.display = "flex";
         battleScreen.style.display = "none";
         startButton.addEventListener("click", startGame);
-
-
       }
     };
 
@@ -366,25 +372,23 @@ const takeTurns = async () => {
 
   if (currentMonster.health <= 0) {
     console.log("Monster defeated!");
-    const monsterIndex = monsters.findIndex((monster)=>{
-      return monster.name === currentMonster.name 
-    })
-    monsters.splice(monsterIndex,1)
-    resetHealthBar = ()=>{
-      monsterHealth.style.width = "100%"
-    }
-    setTimeout(resetHealthBar,1500)
-    if (monsters.length === 0){
-      displayMessage.innerText = "you won"
+    const monsterIndex = monsters.findIndex((monster) => {
+      return monster.name === currentMonster.name;
+    });
+    monsters.splice(monsterIndex, 1);
+    resetHealthBar = () => {
+      monsterHealth.style.width = "100%";
+    };
+    setTimeout(resetHealthBar, 1500);
+    if (monsters.length === 0) {
+      displayMessage.innerText = "you won";
       startScreen.style.display = "flex";
       battleScreen.style.display = "none";
-      monsters = monsterReset
-    }
-    else{
-    game()
+      monsters = monsterReset;
+    } else {
+      game();
     }
     return;
-
   }
 
   console.log("Monster's Turn");
@@ -394,44 +398,43 @@ const takeTurns = async () => {
     if (player.health > 0) {
       setTimeout(takeTurns, 500); // Continue the loop after another delay
     } else {
-      player.health = 100
-      monsterName = currentMonster.name
-      currentMonster.health = healthCheck[monsterName]
+      player.health = 100;
+      monsterName = currentMonster.name;
+      currentMonster.health = healthCheck[monsterName];
       startScreen.style.display = "flex";
-      
-      battleScreen.style.display = "none";
-      displayMessage.innerText ="Player Defeated"
-      console.log("Player defeated!");
-      playerHealth.style.width = "100%"
-      monsters = monsterReset
 
+      battleScreen.style.display = "none";
+      displayMessage.innerText = "Player Defeated";
+      console.log("Player defeated!");
+      playerHealth.style.width = "100%";
+      monsters = monsterReset;
     }
   }, 500);
 };
 
 const game = () => {
-  if (monsters.length !== 0)
-  {currentMonster = whichMonster();
-  if (firstMove(currentMonster) === 1) {
-    console.log("Monster attacks first");
-    monsterTurn(currentMonster);4
-  }
+  if (monsters.length !== 0) {
+    currentMonster = whichMonster();
+    if (firstMove(currentMonster) === 1) {
+      console.log("Monster attacks first");
+      monsterTurn(currentMonster);
+      4;
+    }
 
-  takeTurns();
-} else {
-  console.log("you beat the game")
-}
+    takeTurns();
+  } else {
+    console.log("you beat the game");
+  }
 };
 
-
-function animateImages(){
+function animateImages() {
   if (punchIndex >= punchImages.length) {
-    punchIndex = 0
-    return
+    punchIndex = 0;
+    return;
   }
 
-  playerAsset.src = punchImages[punchIndex]
-  punchIndex++
+  playerAsset.src = punchImages[punchIndex];
+  punchIndex++;
 
-  setTimeout(animateImages, 200)
+  setTimeout(animateImages, 200);
 }
