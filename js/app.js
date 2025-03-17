@@ -227,6 +227,9 @@ const potionMath = (potion) => {
   // If the potion is for mana, increase the player's mana by 50.
   if (potion === "mana") {
     player.mana += 50;
+    if (player.mana>50){
+      player.mana = 50
+    }
     // Calculate the new mana percentage relative to the player's maximum health.
     let currentPercentage = player.mana / playerCheck.mana;
     // If the player's mana exceeds the maximum, cap the health bar at 100%.
@@ -239,6 +242,9 @@ const potionMath = (potion) => {
   } else if (potion === "health") {
     // If the potion is for health, increase the player's health by 50.
     player.health += 50;
+    if (player.health>100){
+      player.health = 100
+    }
     // Calculate the new health percentage relative to the player's maximum health.
     let currentPercentage = player.health / playerCheck.health;
     // If the player's health exceeds the maximum, cap the health bar at 100%.
@@ -265,19 +271,17 @@ const damageMathMonster = (monster) => {
     // Calculate the player's new health percentage after the attack.
     let currentPercentage =
       (player.health - selectedAttack.damage) / playerCheck.health;
-    console.log(`player health: ${player.health}`);
-    console.log(`damage: ${selectedAttack.damage}`);
-    console.log(`health check: ${playerCheck.health}`);
-    console.log(currentPercentage);
-    console.log(playerHealth);
     // Subtract the damage from the player's current health.
     player.health -= selectedAttack.damage;
     // If the calculated percentage is below zero, set the health bar to 0%.
     if (currentPercentage < 0) {
       playerHealth.style.width = "0%";
     }
+    if (currentPercentage>1){
+      playerHealth.style.width = "100%"
+    }else{
     // Update the player's health bar with the new health percentage.
-    playerHealth.style.width = `${currentPercentage * 100}%`;
+    playerHealth.style.width = `${currentPercentage * 100}%`;}
   }
 };
 
@@ -349,6 +353,7 @@ const playerTurn = () => {
         // Attach click event listeners to each attack option.
         if (player.mana<10){
           lilFireButton.disabled = true 
+          bigFireButton.disabled = true
         
         }
         else if(player.mana<20){
@@ -521,6 +526,7 @@ const takeTurns = async () => {
     } else {
       // If the player is defeated, reset health, show defeat message, and reset monsters.
       player.health = 100;
+      player.mana = 50
       monsterName = currentMonster.name;
       currentMonster.health = healthCheck[monsterName];
       startScreen.style.display = "flex";
