@@ -40,17 +40,19 @@ const healthCheck = { spider: 50, slime: 75, zombie: 100, wolf: 50 }; // Referen
 let monsterReset = [
   {
     name: "spider",
-    baseAsset: "./assets/battle.jpeg",
+    baseAsset: "./assets/spider.png",
     health: 50,
     speed: 5,
     armor: 0.95,
     attacks: [
       { name: "fang-stab", accuracy: 0.6, damage: 35 },
       { name: "stomp", accuracy: 0.9, damage: 20 },
+      
     ],
   },
   {
     name: "slime",
+    baseAsset: "./assets/slime.png",
     health: 75,
     speed: 2,
     armor: 1,
@@ -61,6 +63,7 @@ let monsterReset = [
   },
   {
     name: "zombie",
+    baseAsset: "./assets/zombie.jpeg",
     health: 100,
     speed: 7,
     armor: 0.9,
@@ -71,6 +74,7 @@ let monsterReset = [
   },
   {
     name: "wolf",
+    baseAsset: "./assets/wolf.png",
     health: 50,
     speed: 15,
     armor: 1,
@@ -84,17 +88,19 @@ let monsterReset = [
 let monsters = [
   {
     name: "spider",
-    baseAsset: "./assets/battle.jpeg",
+    baseAsset: "./assets/spider.png",
     health: 50,
     speed: 5,
     armor: 0.95,
     attacks: [
       { name: "fang-stab", accuracy: 0.6, damage: 35 },
       { name: "stomp", accuracy: 0.9, damage: 20 },
+      
     ],
   },
   {
     name: "slime",
+    baseAsset: "./assets/slime.png",
     health: 75,
     speed: 2,
     armor: 1,
@@ -105,6 +111,7 @@ let monsters = [
   },
   {
     name: "zombie",
+    baseAsset: "./assets/zombie.jpeg",
     health: 100,
     speed: 7,
     armor: 0.9,
@@ -115,6 +122,7 @@ let monsters = [
   },
   {
     name: "wolf",
+    baseAsset: "./assets/wolf.png",
     health: 50,
     speed: 15,
     armor: 1,
@@ -550,6 +558,8 @@ const game = () => {
   if (monsters.length !== 0) {
     // Select a random monster for the current round.
     currentMonster = whichMonster();
+    monsterAsset.src = currentMonster.baseAsset
+    
     // Determine if the monster should attack first based on speed.
     if (firstMove(currentMonster) === 1) {
       console.log("Monster attacks first");

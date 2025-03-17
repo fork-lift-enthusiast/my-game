@@ -14,7 +14,7 @@ I want to make a simple turn based combat game
 - AAU i should be able to lose and gain hp and mana during turns of the fight
 - AAU the enemy should be able to lose and gain hp from my attacks
 - AAU i shoudl be able to use various attacks with differnt names, accuracy, and damage
-- AAU i should be able to run from combat based on a few factors: speed comparitive to enemy
+- AAU i should be able to run from combat 
 - AAU i should be able to use a hp potion that heals me or a mana potion that replenishes mana
 - AAU I should be able to win or lose a fight
 - AAU if i win start a new fight

@@ -1,5 +1,5 @@
 # my-game
-
+![logo](./assets/logo.png)
 ## Game Description
 
 my game is a turn-based fighting game inspired by classic Pokémon battles, where you—the main character—battle against four generic monsters: a spider, slime, zombie, and wolf. Each monster comes with unique stats and specialized attack moves. Use punches, kicks, magical fire spells, and potions strategically to defeat each enemy and win the game!
