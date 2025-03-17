@@ -31,7 +31,7 @@ HTML5
 
 CSS3 
 
-Flexbox
+procreate 
 
 ## future updates
 i need to make it prettier(more animations, backfround, better styling for my buttons)
