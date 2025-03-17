@@ -2,7 +2,7 @@
 ![logo](./assets/logo.png)
 ## Game Description
 
-my game is a turn-based fighting game inspired by classic Pokémon battles, where you—the main character—battle against four generic monsters: a spider, slime, zombie, and wolf. Each monster comes with unique stats and specialized attack moves. Use punches, kicks, magical fire spells, and potions strategically to defeat each enemy and win the game!
+my game is a turn-based fighting game inspired by classic Pokémon battles, where you—the main character—battle against four generic monsters: a spider, slime, zombie, and wolf. Each monster comes with unique stats and specialized attack moves. you can use punches, kicks, magical fire spells, and potions strategically to defeat each enemy and win the game
 
 ## Background
 
@@ -29,9 +29,17 @@ JavaScript (ES6+)
 
 HTML5
 
-CSS3 (including Flexbox)
+CSS3 
 
-Macbook Pro
+Flexbox
+
+## future updates
+i need to make it prettier(more animations, backfround, better styling for my buttons)
+i wanna make an overworld, shop, boss level 
+i want to add speed mechanics to the run option 
+i want to make the mechanics more complex ex: armor, enemy bloodlust, differnt flee reactions, etc 
+i want to add experience and gold after you win a fight 
+
 
 
 

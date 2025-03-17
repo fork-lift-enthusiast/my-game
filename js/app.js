@@ -47,7 +47,6 @@ let monsterReset = [
     attacks: [
       { name: "fang-stab", accuracy: 0.6, damage: 35 },
       { name: "stomp", accuracy: 0.9, damage: 20 },
-      
     ],
   },
   {
@@ -95,7 +94,6 @@ let monsters = [
     attacks: [
       { name: "fang-stab", accuracy: 0.6, damage: 35 },
       { name: "stomp", accuracy: 0.9, damage: 20 },
-      
     ],
   },
   {
@@ -145,7 +143,7 @@ let punchIndex = 0; // Index to track the current image in the punch animation s
 
 // ------------------------------ DOM ELEMENTS ---------------------------------
 // Query and store DOM elements needed for game interactions and UI updates.
-const instructions = document.querySelector('.instructions');
+const instructions = document.querySelector(".instructions");
 const displayMessage = document.querySelector("#Welcome-Text"); // Element displaying the welcome or status message.
 const monsterHealth = document.querySelector(".monster-Health-Tracker"); // Monster health bar element.
 const playerHealth = document.querySelector(".health-tracker"); // Player health bar element.
@@ -235,8 +233,8 @@ const potionMath = (potion) => {
   // If the potion is for mana, increase the player's mana by 50.
   if (potion === "mana") {
     player.mana += 50;
-    if (player.mana>50){
-      player.mana = 50
+    if (player.mana > 50) {
+      player.mana = 50;
     }
     // Calculate the new mana percentage relative to the player's maximum health.
     let currentPercentage = player.mana / playerCheck.mana;
@@ -250,8 +248,8 @@ const potionMath = (potion) => {
   } else if (potion === "health") {
     // If the potion is for health, increase the player's health by 50.
     player.health += 50;
-    if (player.health>100){
-      player.health = 100
+    if (player.health > 100) {
+      player.health = 100;
     }
     // Calculate the new health percentage relative to the player's maximum health.
     let currentPercentage = player.health / playerCheck.health;
@@ -285,11 +283,12 @@ const damageMathMonster = (monster) => {
     if (currentPercentage < 0) {
       playerHealth.style.width = "0%";
     }
-    if (currentPercentage>1){
-      playerHealth.style.width = "100%"
-    }else{
-    // Update the player's health bar with the new health percentage.
-    playerHealth.style.width = `${currentPercentage * 100}%`;}
+    if (currentPercentage > 1) {
+      playerHealth.style.width = "100%";
+    } else {
+      // Update the player's health bar with the new health percentage.
+      playerHealth.style.width = `${currentPercentage * 100}%`;
+    }
   }
 };
 
@@ -359,17 +358,14 @@ const playerTurn = () => {
         bigFireButton.classList.remove("hidden");
 
         // Attach click event listeners to each attack option.
-        if (player.mana<10){
-          lilFireButton.disabled = true 
-          bigFireButton.disabled = true
-        
-        }
-        else if(player.mana<20){
-          bigFireButton.disabled = true
-        }
-        else{
-          bigFireButton.disabled = false
-          lilFireButton.disabled = false
+        if (player.mana < 10) {
+          lilFireButton.disabled = true;
+          bigFireButton.disabled = true;
+        } else if (player.mana < 20) {
+          bigFireButton.disabled = true;
+        } else {
+          bigFireButton.disabled = false;
+          lilFireButton.disabled = false;
         }
         [kickButton, punchButton, lilFireButton, bigFireButton].forEach(
           (atkButton) => {
@@ -383,14 +379,17 @@ const playerTurn = () => {
                 // If the chosen attack is 'punch', trigger the punch animation.
                 if (event.target.dataset.attack === "punch") {
                   animateImages();
+                } else if (
+                  event.target.dataset.attack === "lilFire" ||
+                  event.target.dataset.attack === "bigFire"
+                ) {
+                  player.mana -=
+                    player.attacks[event.target.dataset.attack].cost;
+                  let percentage = player.mana / playerCheck.mana;
+                  console.log(percentage);
+                  playerMana.style.width = `${percentage * 100}%`;
                 }
-                else if (event.target.dataset.attack === "lilFire" || event.target.dataset.attack === "bigFire"){
-                  player.mana -= player.attacks[event.target.dataset.attack].cost
-                  let percentage = player.mana / playerCheck.mana
-                  console.log(percentage)
-                  playerMana.style.width = `${percentage * 100}%`
-                }
-              
+
                 // Hide the attack option buttons after selection.
                 punchButton.classList.add("hidden");
                 kickButton.classList.add("hidden");
@@ -534,7 +533,7 @@ const takeTurns = async () => {
     } else {
       // If the player is defeated, reset health, show defeat message, and reset monsters.
       player.health = 100;
-      player.mana = 50
+      player.mana = 50;
       monsterName = currentMonster.name;
       currentMonster.health = healthCheck[monsterName];
       startScreen.style.display = "flex";
@@ -558,8 +557,8 @@ const game = () => {
   if (monsters.length !== 0) {
     // Select a random monster for the current round.
     currentMonster = whichMonster();
-    monsterAsset.src = currentMonster.baseAsset
-    
+    monsterAsset.src = currentMonster.baseAsset;
+
     // Determine if the monster should attack first based on speed.
     if (firstMove(currentMonster) === 1) {
       console.log("Monster attacks first");
@@ -582,7 +581,7 @@ const game = () => {
   resetting health bars, and initiating a new game round.
 */
 const startGame = () => {
-  instructions.classList.add('hidden');
+  instructions.classList.add("hidden");
   // Hide the start screen.
   startScreen.style.display = "none";
   // Display the player action buttons.
@@ -594,7 +593,7 @@ const startGame = () => {
   playerHealth.style.width = "100%";
   // Reset the monster's health bar to full.
   monsterHealth.style.width = "100%";
-  playerMana.style.width = '100%';
+  playerMana.style.width = "100%";
   // Start a new game round.
   game();
 };
