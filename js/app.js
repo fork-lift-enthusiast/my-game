@@ -1,3 +1,9 @@
+// Emre's notes from project presentations
+// - Great code organization
+// - Animation to health chronology is a bit off, how could you fix that?
+// - You can use a better way to reset the player stats
+// - Super game! 
+
 // ------------------------------ CONSTANTS ---------------------------------
 let win = false; // Global flag indicating if the player has won the game.
 let restart = false; // Global flag indicating if the game should be restarted.
@@ -320,6 +326,7 @@ function animateImages() {
   // Increment the punch index to move to the next image.
   punchIndex++;
   // Continue the animation after a 200ms delay.
+  // TODO: Likely the animation to health bar reduction misync is happening due to this timeout
   setTimeout(animateImages, 200);
 }
 
